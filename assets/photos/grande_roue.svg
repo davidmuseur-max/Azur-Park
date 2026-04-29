@@ -1,0 +1,43 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a3a6e"/>
+      <stop offset="1" stop-color="#0049A8"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#sky)"/>
+  <!-- Étoiles -->
+  <circle cx="50" cy="40" r="1" fill="#FFE08A"/>
+  <circle cx="150" cy="20" r="1.5" fill="#FFB800"/>
+  <circle cx="320" cy="50" r="1" fill="#FFE08A"/>
+  <circle cx="370" cy="80" r="1" fill="#FFB800"/>
+  <!-- Grande roue -->
+  <g transform="translate(200,180)">
+    <circle r="100" fill="none" stroke="#FFB800" stroke-width="3"/>
+    <circle r="100" fill="none" stroke="#00A4DE" stroke-width="1"/>
+    <circle r="8" fill="#0F1B3D" stroke="#FFB800" stroke-width="2"/>
+    <!-- Rayons -->
+    <g stroke="#FFB800" stroke-width="2">
+      <line x1="0" y1="0" x2="0" y2="-100"/>
+      <line x1="0" y1="0" x2="71" y2="-71"/>
+      <line x1="0" y1="0" x2="100" y2="0"/>
+      <line x1="0" y1="0" x2="71" y2="71"/>
+      <line x1="0" y1="0" x2="0" y2="100"/>
+      <line x1="0" y1="0" x2="-71" y2="71"/>
+      <line x1="0" y1="0" x2="-100" y2="0"/>
+      <line x1="0" y1="0" x2="-71" y2="-71"/>
+    </g>
+    <!-- Cabines -->
+    <rect x="-8" y="-108" width="16" height="14" rx="2" fill="#D63D2E"/>
+    <rect x="63" y="-79" width="16" height="14" rx="2" fill="#FFB800"/>
+    <rect x="92" y="-7" width="16" height="14" rx="2" fill="#00A4DE"/>
+    <rect x="63" y="64" width="16" height="14" rx="2" fill="#2D8659"/>
+    <rect x="-8" y="92" width="16" height="14" rx="2" fill="#9C5BC4"/>
+    <rect x="-79" y="64" width="16" height="14" rx="2" fill="#D63D2E"/>
+    <rect x="-108" y="-7" width="16" height="14" rx="2" fill="#FFB800"/>
+    <rect x="-79" y="-79" width="16" height="14" rx="2" fill="#00A4DE"/>
+  </g>
+  <!-- Sol -->
+  <rect x="0" y="280" width="400" height="20" fill="#0F1B3D"/>
+  <text x="200" y="294" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#FFB800" font-weight="600">AZUR PARK · GRANDE ROUE</text>
+</svg>
