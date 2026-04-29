@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -246,6 +246,145 @@ body {
   color: var(--ink-soft);
   line-height: 1.6;
   max-width: 720px;
+}
+
+/* ============ BIBLIOTHÈQUE DOCS ============ */
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s;
+  position: relative;
+  cursor: pointer;
+}
+.doc-card:hover {
+  border-color: var(--primary);
+  background: #FFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,73,168,0.1);
+}
+.doc-card.doc-primary {
+  background: linear-gradient(135deg, rgba(0,73,168,0.04), rgba(255,184,0,0.04));
+  border-color: var(--primary);
+  border-left: 3px solid var(--primary);
+}
+.doc-card.doc-primary:hover {
+  border-left: 3px solid var(--accent);
+}
+.doc-ico {
+  font-size: 32px;
+  flex-shrink: 0;
+  width: 48px;
+  text-align: center;
+}
+.doc-body { flex-grow: 1; min-width: 0; }
+.doc-cat {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-deep);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.doc-title {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+.doc-desc {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.doc-meta {
+  font-size: 10px;
+  color: var(--ink-light);
+  font-style: italic;
+}
+.doc-action {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  padding: 8px 14px;
+  background: rgba(0,73,168,0.06);
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.doc-card:hover .doc-action {
+  background: var(--primary);
+  color: #FFF;
+}
+
+/* ============ GALERIE ============ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+.gallery-item {
+  background: #FFF;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.gallery-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,73,168,0.12);
+  border-color: var(--primary);
+}
+.gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid var(--line);
+}
+.gallery-item.gallery-vital {
+  border-left: 3px solid var(--critical);
+}
+.gallery-item.gallery-eleve {
+  border-left: 3px solid var(--warning);
+}
+.gallery-caption {
+  padding: 16px 18px;
+}
+.gallery-cap-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.gallery-cap-desc {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .docs-grid, .gallery-grid { grid-template-columns: 1fr; }
 }
 
 /* ============ KPI CARDS ============ */
@@ -940,6 +1079,14 @@ body {
 
     <div class="nav-section">
       <div class="nav-label">Ressources</div>
+      <div class="nav-item" data-target="library">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span>Bibliothèque (17 docs)</span>
+      </div>
+      <div class="nav-item" data-target="gallery">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Galerie</span>
+      </div>
       <div class="nav-item" data-target="rex">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
         <span>REX & historique</span>
@@ -1057,6 +1204,27 @@ body {
       <div class="note-foot">
         <h4>Méthodologie de référence</h4>
         <p>Plateforme élaborée pour <strong>Azur Park (Gassin)</strong>, en s'inspirant des bonnes pratiques observées dans les DUE de référence <strong>Antibes Land 2026</strong> et <strong>Koaland V13-2026</strong>, conformément à la synthèse comparative jointe au projet. Articulation : ce site web + DUERP Word v3 (signé) + classeur Excel des 839 critères (pilotage opérationnel).</p>
+      </div>
+
+      <!-- Bandeau téléchargements rapides -->
+      <div class="card" style="margin-top: 32px; background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 100%); border: none; color: #FFF;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+          <div>
+            <div style="font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; color: var(--accent); margin-bottom: 6px;">Téléchargements rapides</div>
+            <div style="font-size: 13px; color: rgba(255,255,255,0.8);">Les 2 livrables principaux du dispositif HSE Azur Park 2026 — accès direct</div>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="docs/DUERP_2026_consolide_v3.docx" download style="display:inline-flex; align-items:center; gap:8px; padding:12px 20px; background: var(--accent); color: var(--ink); border-radius: 100px; font-size: 13px; font-weight: 700; text-decoration: none;">
+              📋 DUERP Word
+            </a>
+            <a href="docs/Audit_RISC4_839_criteres.xlsx" download style="display:inline-flex; align-items:center; gap:8px; padding:12px 20px; background: #FFF; color: var(--primary); border-radius: 100px; font-size: 13px; font-weight: 700; text-decoration: none;">
+              📊 Audit RISC-4 Excel
+            </a>
+            <button onclick="document.querySelector('[data-target=library]').click()" style="display:inline-flex; align-items:center; gap:8px; padding:12px 20px; background: transparent; border: 1px solid var(--accent); color: var(--accent); border-radius: 100px; font-size: 13px; font-weight: 700; cursor: pointer;">
+              Voir les 17 documents →
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1548,6 +1716,343 @@ body {
       </div>
     </section>
 
+    <!-- ============ BIBLIOTHÈQUE DOCUMENTAIRE ============ -->
+    <section id="library" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">17 documents — historique 2013 à 2026</div>
+        <h2 class="section-title">Bibliothèque <em>documentaire</em></h2>
+        <p class="section-desc">L'ensemble des documents constitutifs du dispositif HSE Azur Park — livrables 2026, comptes-rendus de visite SECURE, audit blanc 2024, plan de prévention 2023, visites historiques 2013, support engins, modèles d'attestations.</p>
+      </div>
+
+      <!-- Stats biblio -->
+      <div class="kpi-grid" style="margin-bottom: 32px;">
+        <div class="kpi ok"><div class="kpi-label">Livrables 2026</div><div class="kpi-value">2</div><div class="kpi-sub">DUERP Word + Excel RISC-4</div></div>
+        <div class="kpi"><div class="kpi-label">Visites SECURE 2024-2025</div><div class="kpi-value">4</div><div class="kpi-sub">Audits blancs et CR de visite</div></div>
+        <div class="kpi"><div class="kpi-label">Plans de prévention historiques</div><div class="kpi-value">3</div><div class="kpi-sub">2013 V1+V2 et 2023</div></div>
+        <div class="kpi warn"><div class="kpi-label">Documents techniques</div><div class="kpi-value">8</div><div class="kpi-sub">Engins, protocole, réglementation</div></div>
+      </div>
+
+      <!-- ====== Livrables 2026 ====== -->
+      <div class="card" style="margin-bottom: 24px;">
+        <div class="card-title">📄 Livrables 2026 (signés/finalisés)</div>
+        <div class="card-sub">Documents de référence à signer par la direction et conserver au registre de sécurité</div>
+        <div class="docs-grid">
+
+          <a href="docs/DUERP_2026_consolide_v3.docx" download class="doc-card doc-primary">
+            <div class="doc-ico">📋</div>
+            <div class="doc-body">
+              <div class="doc-cat">DUERP Word</div>
+              <div class="doc-title">DUERP 2026 consolidé — version 3</div>
+              <div class="doc-desc">88 Ko · 1 780 paragraphes · 10 parties · 16 fiches détaillées · 4 autorisations nominatives · attestations</div>
+              <div class="doc-meta">Format Word · prêt à signer</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Audit_RISC4_839_criteres.xlsx" download class="doc-card doc-primary">
+            <div class="doc-ico">📊</div>
+            <div class="doc-body">
+              <div class="doc-cat">Audit Excel</div>
+              <div class="doc-title">Audit RISC-4 — 839 critères</div>
+              <div class="doc-desc">101 Ko · 11 onglets · 9 catégories de risque · listes déroulantes · taux de conformité automatique</div>
+              <div class="doc-meta">Outil de pilotage opérationnel pour Sam</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ====== Visites SECURE 2024-2025 ====== -->
+      <div class="card" style="margin-bottom: 24px;">
+        <div class="card-title">🔍 Visites SECURE 2024-2025</div>
+        <div class="card-sub">David MUSEUR (RiskAttitude / SECURE) — audits annuels et de mise à jour</div>
+        <div class="docs-grid">
+
+          <a href="docs/Visite_SECURE_11_juillet_2025.pdf" download class="doc-card">
+            <div class="doc-ico">📄</div>
+            <div class="doc-body">
+              <div class="doc-cat">Visite 2025 v2</div>
+              <div class="doc-title">Mise à jour visite SECURE — 11 juillet 2025</div>
+              <div class="doc-desc">881 Ko · scores matrice 5×5 · photos analysées · constats post-actions correctives</div>
+              <div class="doc-meta">PDF · source pour les fiches FE-01 / FI-01 / FM-01</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Modifications_DUE_a_apporter.pdf" download class="doc-card">
+            <div class="doc-ico">📄</div>
+            <div class="doc-body">
+              <div class="doc-cat">Modifications DUE</div>
+              <div class="doc-title">Modifications DUE à apporter (post visite 2025)</div>
+              <div class="doc-desc">1,3 Mo · liste opérationnelle des points de mise à jour de la plateforme RISC-4</div>
+              <div class="doc-meta">PDF · checklist exploitable directement</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Compte_rendu_audit_10_aout_2024.docx" download class="doc-card">
+            <div class="doc-ico">📝</div>
+            <div class="doc-body">
+              <div class="doc-cat">Audit blanc 2024</div>
+              <div class="doc-title">Compte-rendu audit du 10 août 2024</div>
+              <div class="doc-desc">8 Ko · note globale 17,54/20 · démarches exemplaires validées · préconisation caméra thermique</div>
+              <div class="doc-meta">Word · échange Sam PAILLON / David MUSEUR</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ====== Plans de prévention historiques ====== -->
+      <div class="card" style="margin-bottom: 24px;">
+        <div class="card-title">📚 Plans de prévention historiques</div>
+        <div class="card-sub">Traçabilité de la démarche depuis 2013 — preuves de la culture sécurité Azur Park</div>
+        <div class="docs-grid">
+
+          <a href="docs/Plan_prevention_22_juin_2023.docx" download class="doc-card">
+            <div class="doc-ico">📋</div>
+            <div class="doc-body">
+              <div class="doc-cat">Plan 2023</div>
+              <div class="doc-title">Mise à jour DUE — 22 juin 2023</div>
+              <div class="doc-desc">9 Ko · recommandations 2023-5 à 2023-11 · plan d'action travaux RiskAttitude</div>
+              <div class="doc-meta">Word · base du suivi 2023-2026</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Compte_rendu_visite_initiale_2013_V1.docx" download class="doc-card">
+            <div class="doc-ico">📜</div>
+            <div class="doc-body">
+              <div class="doc-cat">Visite 2013 V1</div>
+              <div class="doc-title">Compte-rendu visite initiale — 6 mai 2013</div>
+              <div class="doc-desc">14 Ko · diagnostic initial RiskAttitude · 11 unités de travail recensées</div>
+              <div class="doc-meta">Word · point de départ historique</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Compte_rendu_visite_2013_V2.docx" download class="doc-card">
+            <div class="doc-ico">📜</div>
+            <div class="doc-body">
+              <div class="doc-cat">Visite 2013 V2</div>
+              <div class="doc-title">Compte-rendu V2 — 6 mai 2013 (révisé)</div>
+              <div class="doc-desc">14 Ko · version finalisée du diagnostic initial</div>
+              <div class="doc-meta">Word · base de comparaison 2013/2026</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ====== Documents techniques engins ====== -->
+      <div class="card" style="margin-bottom: 24px;">
+        <div class="card-title">🚜 Volet engins de levage</div>
+        <div class="card-sub">Manitou MT 1740 SLT, grues, Fenwick — autorisations nominatives et VGP</div>
+        <div class="docs-grid">
+
+          <a href="docs/Volet_engins_DUERP.pdf" download class="doc-card">
+            <div class="doc-ico">🚜</div>
+            <div class="doc-body">
+              <div class="doc-cat">Volet engins</div>
+              <div class="doc-title">Volet engins DUERP</div>
+              <div class="doc-desc">308 Ko · UT spécifique conducteurs engins · grille G×P · plan d'action CACES</div>
+              <div class="doc-meta">PDF · annexe DUERP</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Autorisations_conduite_nominatives.pdf" download class="doc-card">
+            <div class="doc-ico">📑</div>
+            <div class="doc-body">
+              <div class="doc-cat">Autorisations</div>
+              <div class="doc-title">Autorisations conduite nominatives</div>
+              <div class="doc-desc">580 Ko · 4 conducteurs : Paillon Serge, Paillon Sam, Lalot Reynald, Canache Marian · saison 2026</div>
+              <div class="doc-meta">PDF · prêt à signer</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Fiche_technique_Manitou_MT1740SLT.pdf" download class="doc-card">
+            <div class="doc-ico">📐</div>
+            <div class="doc-body">
+              <div class="doc-cat">Fiche tech.</div>
+              <div class="doc-title">Manitou MT 1740 SLT</div>
+              <div class="doc-desc">300 Ko · 4 000 kg · 16,65 m de levage · abaques de charge · fiche constructeur</div>
+              <div class="doc-meta">PDF · documentation technique</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Support_reglementaire_engins.pdf" download class="doc-card">
+            <div class="doc-ico">⚖️</div>
+            <div class="doc-body">
+              <div class="doc-cat">Support réglo.</div>
+              <div class="doc-title">Support réglementaire engins</div>
+              <div class="doc-desc">325 Ko · CACES R482 F / R490 / R489 · sanctions · jurisprudence engins</div>
+              <div class="doc-meta">PDF · brief Sam</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ====== Documents complémentaires ====== -->
+      <div class="card">
+        <div class="card-title">📁 Documents complémentaires</div>
+        <div class="card-sub">Synthèses, protocole sanitaire, réglementation, référentiels comparatifs</div>
+        <div class="docs-grid">
+
+          <a href="docs/Synthese_comparative_DUE_references.pdf" download class="doc-card">
+            <div class="doc-ico">📊</div>
+            <div class="doc-body">
+              <div class="doc-cat">Comparatif</div>
+              <div class="doc-title">Synthèse comparative DUE</div>
+              <div class="doc-desc">371 Ko · benchmark Antibes Land 2026 · Koaland V13-2026 · bonnes pratiques sectorielles</div>
+              <div class="doc-meta">PDF · base méthodologique</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Resume_executif.docx" download class="doc-card">
+            <div class="doc-ico">📄</div>
+            <div class="doc-body">
+              <div class="doc-cat">Résumé</div>
+              <div class="doc-title">Résumé exécutif</div>
+              <div class="doc-desc">30 Ko · synthèse décisionnelle pour la direction · enjeux et arbitrages</div>
+              <div class="doc-meta">Word · 1 page</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Reglementation_securite_Azur_Park.docx" download class="doc-card">
+            <div class="doc-ico">📜</div>
+            <div class="doc-body">
+              <div class="doc-cat">Réglementation</div>
+              <div class="doc-title">Réglementation et sécurité Azur Park</div>
+              <div class="doc-desc">9 Ko · cadre légal complet · loi 2008-136 · NF EN 13814 · Code du travail</div>
+              <div class="doc-meta">Word · note de synthèse</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Protocole_sanitaire.pdf" download class="doc-card">
+            <div class="doc-ico">🧴</div>
+            <div class="doc-body">
+              <div class="doc-cat">Sanitaire</div>
+              <div class="doc-title">Protocole sanitaire Azur Park</div>
+              <div class="doc-desc">2,9 Mo · protocole COVID-19 · base archivable · à actualiser si pandémie</div>
+              <div class="doc-meta">PDF · référence historique</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+          <a href="docs/Info_materiel_Azur_Park.docx" download class="doc-card">
+            <div class="doc-ico">🔧</div>
+            <div class="doc-body">
+              <div class="doc-cat">Inventaire</div>
+              <div class="doc-title">Info matériel Azur Park</div>
+              <div class="doc-desc">Inventaire matériel et équipements site (à compléter)</div>
+              <div class="doc-meta">Word · à enrichir par Sam</div>
+            </div>
+            <div class="doc-action">Télécharger</div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="note-foot">
+        <h4>Bibliothèque évolutive</h4>
+        <p>Cette bibliothèque est un <strong>ensemble vivant</strong> : à chaque nouvelle visite SECURE, audit ou mise à jour réglementaire, les documents seront ajoutés et l'historique conservé. Pour transmettre tout ou partie de la bibliothèque à un tiers (Inspection du Travail, assureur RC, médecine du travail, expert-comptable de l'audit social), utiliser le bouton télécharger sur chaque carte. Les documents sont également disponibles via accès direct dans le dossier <code>/docs/</code> du déploiement.</p>
+      </div>
+    </section>
+
+    <!-- ============ GALERIE ============ -->
+    <section id="gallery" class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Visuels du parc et zones de risque</div>
+        <h2 class="section-title">Galerie <em>illustrée</em></h2>
+        <p class="section-desc">Illustrations vectorielles couvrant les principales zones et thématiques du DUERP — réalisées dans la charte graphique Azur Park (bleu cobalt + jaune solaire). Pour les photos réelles du site, se référer aux comptes-rendus de visite SECURE 2024-2025 (voir Bibliothèque).</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Identité visuelle &amp; ambiance</div>
+        <div class="card-sub">Le parc d'attractions nocturne du Golfe de Saint-Tropez · 35 attractions · 2 mini-golfs préhistoriques</div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="assets/photos/grande_roue.svg" alt="Grande roue Azur Park nuit"/>
+            <div class="gallery-caption">
+              <div class="gallery-cap-title">La grande roue — symbole du parc</div>
+              <div class="gallery-cap-desc">Maintenance soumise à permis de travail en hauteur · ligne de vie en place · fiche FM-02</div>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/photos/manitou.svg" alt="Manitou MT 1740 SLT"/>
+            <div class="gallery-caption">
+              <div class="gallery-cap-title">Chariot télescopique Manitou MT 1740 SLT</div>
+              <div class="gallery-cap-desc">4 000 kg · 16,65 m de levage · CACES R482 cat. F obligatoire · fiche FM-03</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Zones à risque cartographiées</div>
+        <div class="card-sub">Illustrations des principaux constats issus des visites SECURE 9 et 11 juillet 2025</div>
+        <div class="gallery-grid">
+
+          <div class="gallery-item gallery-vital">
+            <img src="assets/photos/electrique.svg" alt="Risque électrique extérieur"/>
+            <div class="gallery-caption">
+              <div class="gallery-cap-title"><span style="color:var(--critical); font-weight:700;">FE-01 · VITAL 25/25</span></div>
+              <div class="gallery-cap-desc">Boîtier de commande électrique au sol en zone extérieure — exposé humidité — action immédiate sous 24 h</div>
+            </div>
+          </div>
+
+          <div class="gallery-item gallery-eleve">
+            <img src="assets/photos/atelier.svg" alt="Atelier maintenance"/>
+            <div class="gallery-caption">
+              <div class="gallery-cap-title"><span style="color:var(--warning); font-weight:700;">FE-02 / FI-01 · MODÉRÉ 8/25</span></div>
+              <div class="gallery-cap-desc">Atelier maintenance — tableau électrique ; configuration corrigée le 11/07/2025 (bidons éloignés ≥ 1 m)</div>
+            </div>
+          </div>
+
+          <div class="gallery-item gallery-eleve">
+            <img src="assets/photos/incendie.svg" alt="Cartons risque incendie"/>
+            <div class="gallery-caption">
+              <div class="gallery-cap-title"><span style="color:var(--warning); font-weight:700;">FI-02 · ÉLEVÉ 12/25</span></div>
+              <div class="gallery-cap-desc">Cartons en remorque · charge calorifique 5 000-7 000 MJ ≈ 150-200 L essence — tri sous 24 h, évacuation 80 % à 48 h</div>
+            </div>
+          </div>
+
+          <div class="gallery-item gallery-vital">
+            <img src="assets/photos/dae.svg" alt="DAE défibrillateur"/>
+            <div class="gallery-caption">
+              <div class="gallery-cap-title"><span style="color:var(--critical); font-weight:700;">FS-01 · VITAL juridique</span></div>
+              <div class="gallery-cap-desc">Absence DAE — non-conformité ERP catégorie 5 depuis 1er janvier 2022 (≥ 3 ans 6 mois) · investissement 1 800 € + 300 €/an</div>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="assets/photos/epi.svg" alt="EPI équipements protection individuelle"/>
+            <div class="gallery-caption">
+              <div class="gallery-cap-title">EPI · attestation à signer à l'embauche</div>
+              <div class="gallery-cap-desc">Casque, chaussures sécurité, gants, vêtements haute visibilité · Art. R.4323-95 et R.4323-104 CT · attestation détachable Partie 10.1</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="note-foot">
+        <h4>À propos des illustrations</h4>
+        <p>Les visuels présentés sont des <strong>illustrations vectorielles SVG</strong> conçues spécifiquement pour cette plateforme dans la charte graphique Azur Park (bleu cobalt #0049A8 + jaune solaire #FFB800 + accents méditerranéens). Elles ne contiennent <strong>aucune image identifiable</strong> du parc — pour préserver la confidentialité des constats internes de sécurité. Les <strong>photos réelles</strong> des situations à risque (atelier, équipements, zones extérieures) sont disponibles dans les rapports SECURE 2025 téléchargeables depuis la <a href="#" onclick="document.querySelector('[data-target=library]').click(); return false;" style="color: var(--primary); font-weight: 600;">Bibliothèque documentaire</a>.</p>
+      </div>
+    </section>
+
     <!-- ============ E-RÉPUTATION ============ -->
     <section id="ereput" class="section">
       <div class="section-header">
@@ -1651,7 +2156,9 @@ const titles = {
   atts: ['Attestations & autorisations', 'Modèles obligatoires détachables'],
   contact: ['Acteurs de la prévention', 'Gouvernance sécurité Azur Park'],
   legal: ['Cadre légal', 'Réglementation manèges + Code du travail + autorités'],
-  ereput: ['E-réputation', 'Droit à l\'oubli, désindexation, droit de réponse']
+  ereput: ['E-réputation', 'Droit à l\'oubli, désindexation, droit de réponse'],
+  library: ['Bibliothèque documentaire', '17 documents — historique 2013-2026'],
+  gallery: ['Galerie illustrée', 'Visuels du parc et zones de risque']
 };
 
 navItems.forEach(item => {
